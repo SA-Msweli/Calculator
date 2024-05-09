@@ -167,6 +167,7 @@ namespace Calculator.ViewModels
 
       ResultText = expList.Count == 0 ? "0" : expList[0].ToString();
       History += $"= {ResultText}\n";
+      expression.Clear();
     }
 
     private void Calculate(string opp)
