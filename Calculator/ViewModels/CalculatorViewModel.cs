@@ -17,7 +17,10 @@ namespace Calculator.ViewModels
       get => result.ToString("##########.##########");
       private set
       {
-        result = Convert.ToDecimal(value);
+        if (decimal.TryParse(value, out decimal val))
+        {
+          result = val;
+        }
         OnPropertyChanged(nameof(ResultText));
       }
     }
@@ -105,6 +108,7 @@ namespace Calculator.ViewModels
         case "ClearAll":
           InputText = string.Empty;
           OutputText = string.Empty;
+          ResultText = string.Empty;
           break;
         case "ClearEntry":
           InputText = string.Empty;
