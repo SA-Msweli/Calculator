@@ -100,9 +100,13 @@ namespace Calculator.ViewModels
           break;
         case "MemoryMinus":
           memoryValue -= string.IsNullOrWhiteSpace(InputText) ? 0 : Convert.ToDecimal(InputText);
+          InputText = string.Empty;
+          OutputText = string.Empty;
           break;
         case "MemoryPlus":
           memoryValue += string.IsNullOrWhiteSpace(InputText) ? 0 : Convert.ToDecimal(InputText);
+          InputText = string.Empty;
+          OutputText = string.Empty;
           break;
         case "Backspace":
           InputText = !InputText.Equals(string.Empty) ? InputText.Remove(InputText.Length - 1, 1) : InputText;
