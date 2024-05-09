@@ -3,15 +3,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using System.Linq;
 
 namespace Calculator.ViewModels
 {
   public class CalculatorViewModel : INotifyPropertyChanged
   {
     private Stack<string> expression;
-    List<string> expList;
+    public string History { get; set; }
+    private List<string> expList;
     private decimal result;
+    private decimal memoryValue;
     public string ResultText
     {
       get => result.ToString("##########.##########");
@@ -56,10 +57,12 @@ namespace Calculator.ViewModels
     private Dictionary<string, string> commandOperator;
     public CalculatorViewModel()
     {
+      History = string.Empty;
       input = string.Empty;
       output = string.Empty;
       expList = new();
       expression = new();
+      memoryValue = new();
       commandOperator = new()
       {
         { "Add", "+" },
@@ -90,16 +93,16 @@ namespace Calculator.ViewModels
           InputText += ".";
           break;
         case "PlusMinus":
-          Negate();
+          InputText = !string.IsNullOrWhiteSpace(InputText) && InputText[0].Equals('-') ? InputText.Remove(0,1) : $"-{InputText}";
           break;
         case "MemoryRecall":
-          MemoryRecall();
+          ResultText = memoryValue.ToString();
           break;
         case "MemoryMinus":
-          MemoryMinus();
+          memoryValue -= string.IsNullOrWhiteSpace(InputText) ? 0 : Convert.ToDecimal(InputText);
           break;
         case "MemoryPlus":
-          MemoryPlus();
+          memoryValue += string.IsNullOrWhiteSpace(InputText) ? 0 : Convert.ToDecimal(InputText);
           break;
         case "Backspace":
           InputText = !InputText.Equals(string.Empty) ? InputText.Remove(InputText.Length - 1, 1) : InputText;
@@ -128,6 +131,7 @@ namespace Calculator.ViewModels
 
       if (opp.Equals("="))
       {
+        History += $"{OutputText}\n";
         Calculate();
         OutputText = string.Empty;
         InputText = string.Empty;
@@ -162,6 +166,7 @@ namespace Calculator.ViewModels
       }
 
       ResultText = expList.Count == 0 ? "0" : expList[0].ToString();
+      History += $"= {ResultText}\n";
     }
 
     private void Calculate(string opp)
@@ -188,44 +193,9 @@ namespace Calculator.ViewModels
       expList.ForEach(ex => {  expression.Push(ex); });
     }
 
-    private void Calculate(char opp)
-    {
-
-    }
-
     private void ShowHistory()
     {
-      throw new NotImplementedException();
-    }
-
-    private void MemoryRecall()
-    {
-      throw new NotImplementedException();
-    }
-
-    private void MemoryMinus()
-    {
-      throw new NotImplementedException();
-    }
-
-    private void MemoryPlus()
-    {
-      throw new NotImplementedException();
-    }
-
-    private void Negate()
-    {
-      throw new NotImplementedException();
-    }
-
-    private void Subtract()
-    {
-      throw new NotImplementedException();
-    }
-
-    private void Add()
-    {
-      throw new NotImplementedException();
+      OnPropertyChanged(nameof(History));
     }
   }
 }

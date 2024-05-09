@@ -11,20 +11,30 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
     <TextBlock
-      Grid.Row="0" MinHeight="75"
+      Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
+      FontSize="15" FontWeight="Bold" Foreground="AliceBlue"
+      HorizontalAlignment="Left" TextWrapping="Wrap"
+      Name="HistorytScreen"
+      Text="{Binding History}"/>
+    <TextBlock
+      Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" MinHeight="75"
       FontSize="30" FontWeight="Bold" Foreground="AliceBlue"
       HorizontalAlignment="Left" TextWrapping="Wrap"
       Name="OutputScreen"
       Text="{Binding OutputText}"/>
     <TextBlock
-      Grid.Row="1" MinHeight="75"
+      Grid.Column="1" Grid.Row="1" MinHeight="75"
       FontSize="30" FontWeight="Bold" Foreground="Bisque"
       HorizontalAlignment="Right" TextWrapping="Wrap"
       Name="ResultScreen"
       Text="{Binding ResultText}"/>
     <TextBlock
-      Grid.Row="2" MinHeight="75"
+      Grid.Column="1" Grid.Row="2" MinHeight="75"
       FontSize="50" FontWeight="Bold" Foreground="WhiteSmoke"
       HorizontalAlignment="Right"
       Name="InputeScreen"
