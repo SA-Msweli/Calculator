@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Calculator.Views.Controls.ButtonGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+  <UserControl.Resources>
+    <Style TargetType="Button">
+      <Setter Property="Margin" Value="5"/>
+      <Setter Property="FontSize" Value="30"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Command" Value="{Binding PressButton}"/>
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <!--#region Keys Row6-->
+    <Button
+      Grid.Row="0" Grid.Column="0" Margin="5"
+      Content="H" FontSize="30" FontWeight="Bold"
+      Name="History"/>
+    <Button
+      Grid.Row="0" Grid.Column="1" Margin="5"
+      Content="CE" FontSize="30" FontWeight="Bold"
+      Name="ClearEntry"/>
+    <Button
+      Grid.Row="0" Grid.Column="2" Margin="5"
+      Content="C" FontSize="30" FontWeight="Bold"
+      Name="ClearAll"/>
+    <Button
+      Grid.Row="0" Grid.Column="3" Margin="5"
+      Name="Backspace">
+      <Grid Margin="5">
+        <materialIcons:MaterialIcon Kind="Backspace"/>
+      </Grid>
+    </Button>
+    <!--#endregion-->
+    <!--#region Keys Row5-->
+    <Button
+      Grid.Row="1" Grid.Column="0" Margin="5"
+      Content="M+" FontSize="30" FontWeight="Bold"
+      Name="MemoryPlus"/>
+    <Button
+      Grid.Row="1" Grid.Column="1" Margin="5"
+      Content="M-" FontSize="30" FontWeight="Bold"
+      Name="MemoryMinus"/>
+    <Button
+      Grid.Row="1" Grid.Column="2" Margin="5"
+      Content="MRC" FontSize="30" FontWeight="Bold"
+      Name="MemoryRecall"/>
+    <Button
+      Grid.Row="1" Grid.Column="3" Margin="5"
+      Name="Divide">
+      <materialIcons:MaterialIcon Kind="Division"/>
+    </Button>
+    <!--#endregion-->
+    <!--#region Keys Row4-->
+    <Button
+      Grid.Row="2" Grid.Column="0" Margin="5"
+      Content="7" FontSize="30" FontWeight="Bold"
+      Name="Number7"/>
+    <Button
+      Grid.Row="2" Grid.Column="1" Margin="5"
+      Content="8" FontSize="30" FontWeight="Bold"
+      Name="Number8"/>
+    <Button
+      Grid.Row="2" Grid.Column="2" Margin="5"
+      Content="9" FontSize="30" FontWeight="Bold"
+      Name="Number9"/>
+    <Button
+      Grid.Row="2" Grid.Column="3" Margin="5"
+      Name="Multiply">
+      <materialIcons:MaterialIcon Kind="Multiply"/>
+    </Button>
+    <!--#endregion-->
+    <!--#region Keys Row3-->
+    <Button
+      Grid.Row="3" Grid.Column="0" Margin="5"
+      Content="4" FontSize="30" FontWeight="Bold"
+      Name="Number4"/>
+    <Button
+      Grid.Row="3" Grid.Column="1" Margin="5"
+      Content="5" FontSize="30" FontWeight="Bold"
+      Name="Number5"/>
+    <Button
+      Grid.Row="3" Grid.Column="2" Margin="5"
+      Content="6" FontSize="30" FontWeight="Bold"
+      Name="Number6"/>
+    <Button
+      Grid.Row="3" Grid.Column="3" Margin="5"
+      Name="Minus">
+      <materialIcons:MaterialIcon Kind="Minus"/>
+    </Button>
+    <!--#endregion-->
+    <!--#region Keys Row2-->
+    <Button
+      Grid.Row="4" Grid.Column="0" Margin="5"
+      Content="1" FontSize="30" FontWeight="Bold"
+      Name="Number1"/>
+    <Button
+      Grid.Row="4" Grid.Column="1" Margin="5"
+      Content="2" FontSize="30" FontWeight="Bold"
+      Name="Number2"/>
+    <Button
+      Grid.Row="4" Grid.Column="2" Margin="5"
+      Content="3" FontSize="30" FontWeight="Bold"
+      Name="Number3"/>
+    <Button
+      Grid.Row="4" Grid.Column="3" Margin="5"
+      Name="Add">
+      <materialIcons:MaterialIcon Kind="Add"/>
+    </Button>
+    <!--#endregion-->
+    <!--#region Keys Row1-->
+    <Button
+      Grid.Row="5" Grid.Column="0" Margin="5"
+      Name="PlusMinus">
+      <materialIcons:MaterialIcon Kind="PlusMinusVariant"/>
+    </Button>
+    <Button
+      Grid.Row="5" Grid.Column="1" Margin="5"
+      Content="0" FontSize="30" FontWeight="Bold"
+      Name="Number0"/>
+    <Button
+      Grid.Row="5" Grid.Column="2" Margin="5"
+      Content="." FontSize="30" FontWeight="Bold"
+      Name="Comma"/>
+    <Button
+      Grid.Row="5" Grid.Column="3" Margin="5"
+      Name="Calculate">
+      <materialIcons:MaterialIcon Kind="Equal"/>
+    </Button>
+    <!--#endregion-->
+  </Grid>
+</UserControl>
